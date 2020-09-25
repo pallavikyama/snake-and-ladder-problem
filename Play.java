@@ -15,6 +15,7 @@ public class Play {
 		int position = START;
 		int dice;
 		int choice;
+		int diceCount = 0;
 
 		// INITIAL POSITION OF PLAYER
 		System.out.println("Player begins at position " + position + "\n");
@@ -22,27 +23,34 @@ public class Play {
 		// COMPUTING PLAYER POSITION ON THE BOARD
 		while (position < END) {
 			dice = (int) (Math.abs(Math.ceil(Math.random() * 6)));
-			System.out.println("Die rolls to give a " + dice);
 			choice = (int) (Math.ceil(Math.random() * 10) % 3);
 			if (dice > 0) {
 				switch (choice) {
 				case LADDER: {
+					System.out.println("Hurray!Got a Ladder!");
+					System.out.println("Die rolls to give a " + dice);
 					position += dice;
 					if (position > END)
 						position -= dice;
 					break;
 				}
 				case SNAKE: {
+					System.out.println("Alas!Got a Snake.");
+					System.out.println("Die rolls to give a " + dice);
 					position -= dice;
 					if (position < START)
 						position = START;
 					break;
 				}
-				default:
+				default: {
+					System.out.println("NO PLAY");
 					break;
 				}
+				}
+				++diceCount;
+				System.out.println("Player is at position " + position + "\n");
 			}
 		}
-		System.out.println("Player finally is at position " + position + " exactly.");
+		System.out.println("The dice was rolled " + diceCount + " times to win the game.");
 	}
 }
