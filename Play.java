@@ -20,23 +20,27 @@ public class Play {
 		System.out.println("Player begins at position " + position + "\n");
 
 		// COMPUTING PLAYER POSITION ON THE BOARD
-		dice = (int) (Math.abs(Math.ceil(Math.random() * 6)));
-		System.out.println("Die rolls to give a " + dice);
-		choice = (int) (Math.ceil(Math.random() * 10) % 3);
-		if (dice > 0) {
-			switch (choice) {
-			case LADDER: {
-				position += dice;
-				break;
-			}
-			case SNAKE: {
-				position -= dice;
-				break;
-			}
-			default:
-				break;
+		while (position < END) {
+			dice = (int) (Math.abs(Math.ceil(Math.random() * 6)));
+			choice = (int) (Math.ceil(Math.random() * 10) % 3);
+			if (dice > 0) {
+				switch (choice) {
+				case LADDER: {
+					position += dice;
+					break;
+				}
+				case SNAKE: {
+					position -= dice;
+					if (position < START)
+						position = START;
+					break;
+				}
+				default:
+					break;
+				}
 			}
 		}
-		System.out.println("Player is at position " + position);
+
+		System.out.println("Player finally is at position " + position);
 	}
 }
