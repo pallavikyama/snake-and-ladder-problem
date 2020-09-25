@@ -22,11 +22,14 @@ public class Play {
 		// COMPUTING PLAYER POSITION ON THE BOARD
 		while (position < END) {
 			dice = (int) (Math.abs(Math.ceil(Math.random() * 6)));
+			System.out.println("Die rolls to give a " + dice);
 			choice = (int) (Math.ceil(Math.random() * 10) % 3);
 			if (dice > 0) {
 				switch (choice) {
 				case LADDER: {
 					position += dice;
+					if (position > END)
+						position -= dice;
 					break;
 				}
 				case SNAKE: {
@@ -40,7 +43,6 @@ public class Play {
 				}
 			}
 		}
-
-		System.out.println("Player finally is at position " + position);
+		System.out.println("Player finally is at position " + position + " exactly.");
 	}
 }
