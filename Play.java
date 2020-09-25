@@ -10,8 +10,13 @@ public class Play {
 
 		// VARIABLES
 		int position = START;
+		int dice;
 
 		// INITIAL POSITION OF PLAYER
 		System.out.println("Player begins at position " + position + "\n");
+
+		// DISPLAYING NUMBER ON THE DICE
+		dice = (int) (Math.abs(Math.ceil(Math.random() * 6)));
+		System.out.println("Die rolls to give a " + dice);
 	}
 }
